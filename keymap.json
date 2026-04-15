@@ -1,0 +1,80 @@
+[
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+    "bindings": {
+      // File navigation
+      "space f f": "file_finder::Toggle",
+      "space f r": "tab_switcher::Toggle",
+      "space ,": "tab_switcher::Toggle",
+
+      // Symbols
+      "space s s": "outline::Toggle",
+
+      // Explorer
+      "space e": "pane::RevealInProjectPanel",
+
+      // Copy paths
+      "space y p": "workspace::CopyPath",
+      "space y n": "workspace::CopyRelativePath",
+
+      // Git
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" },
+      ],
+
+      // Function/class navigation (built-in via tree-sitter)
+      "] f": "vim::NextMethodStart",
+      "[ f": "vim::PreviousMethodStart",
+      "] F": "vim::NextMethodEnd",
+      "[ F": "vim::PreviousMethodEnd",
+
+      // Git hunk navigation
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+
+      // Diagnostics navigation
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+
+      // Extras you might find useful coming from LazyVim
+      "space b d": "pane::CloseActiveItem",
+      "space /": "pane::DeploySearch",
+      "space space": "file_finder::Toggle",
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space x x": "diagnostics::Deploy",
+      "space g b": "git::Blame",
+      "space u h": "editor::ToggleInlayHints",
+    },
+  },
+  {
+    "context": "Dock || ProjectPanel",
+    "bindings": {
+      // Navigate between panes with ctrl-w + hjkl from dock/panel
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // Window splits (matching LazyVim conventions)
+      "space w v": "pane::SplitRight",
+      "space w s": "pane::SplitDown",
+      "space w d": "pane::CloseActiveItem",
+
+      // Terminal
+      "space o t": "terminal_panel::ToggleFocus",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // Quick escape (optional, uncomment if you use jk)
+      // "j k": "vim::NormalBefore"
+    },
+  },
+]
