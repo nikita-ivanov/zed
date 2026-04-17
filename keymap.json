@@ -1,5 +1,8 @@
 [
   {
+    "bindings": { "f11": "debugger::StepInto" },
+  },
+  {
     "context": "VimControl && !menu",
     "bindings": {
       "space": null,
@@ -14,7 +17,7 @@
       "space ,": "tab_switcher::Toggle",
 
       // Symbols
-      "space s s": "outline::Toggle",
+      "space s s": "project_symbols::Toggle",
 
       // Explorer
       "space e": "pane::RevealInProjectPanel",
