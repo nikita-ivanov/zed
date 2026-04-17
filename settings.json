@@ -23,7 +23,7 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Catppuccin Mocha - No Italics",
+    "dark": "Ayu Dark",
   },
   "debugger": {
     "dock": "bottom",
