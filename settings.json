@@ -23,7 +23,7 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Latte",
-    "dark": "Monokai Pro (CE)",
+    "dark": "Catppuccin Mocha - No Italics",
   },
   "debugger": {
     "dock": "bottom",
@@ -32,7 +32,7 @@
   "inlay_hints": { "enabled": false, "show_value_hints": false },
   "languages": {
     "Python": {
-      "language_servers": ["ty", "!basedpyright", "!pyright", "..."],
+      "language_servers": ["ty", "!pylsp", "!basedpyright", "!pyright", "..."],
     },
   },
 }
