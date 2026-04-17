@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Zed (Default)",
   "cursor_blink": true,
   "git_panel": {
     "tree_view": true,
@@ -18,13 +19,20 @@
   "base_keymap": "VSCode",
   "cursor_shape": "bar",
   "ui_font_size": 16,
-  "buffer_font_size": 16.0,
+  "buffer_font_size": 14.0,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "Ayu Dark",
+    "light": "Catppuccin Latte",
+    "dark": "Monokai Pro (CE)",
   },
   "debugger": {
     "dock": "bottom",
+    "show_inline_variable_hints": false,
+  },
+  "inlay_hints": { "enabled": false, "show_value_hints": false },
+  "languages": {
+    "Python": {
+      "language_servers": ["ty", "!basedpyright", "!pyright", "..."],
+    },
   },
 }
