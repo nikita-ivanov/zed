@@ -2,6 +2,15 @@
   {
     "bindings": { "f11": "debugger::StepInto" },
   },
+  // {
+  //   "context": "Dock",
+  //   "bindings": {
+  //     "ctrl-w h": "workspace::ActivatePaneLeft",
+  //     "ctrl-w l": "workspace::ActivatePaneRight",
+  //     "ctrl-w k": "workspace::ActivatePaneUp",
+  //     "ctrl-w j": "workspace::ActivatePaneDown",
+  //   },
+  // },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
