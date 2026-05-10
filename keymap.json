@@ -30,6 +30,7 @@
       "space ,": "tab_switcher::Toggle",
 
       // Symbols
+      // go get symbols in current file use built in gs
       "space s s": "project_symbols::Toggle",
 
       // Explorer
