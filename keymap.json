@@ -1,5 +1,11 @@
 [
   {
+    "context": "ProjectPanel",
+    "bindings": {
+      "space c": "project_panel::CollapseAllEntries",
+    },
+  },
+  {
     "bindings": { "f11": "debugger::StepInto" },
   },
   {
