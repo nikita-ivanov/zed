@@ -36,10 +36,12 @@
       "space ,": "tab_switcher::Toggle",
 
       // Symbols
+      // go get symbols in current file use built in gs
       "space s s": "project_symbols::Toggle",
 
       // Explorer
       "space e": "pane::RevealInProjectPanel",
+      "space d u": "debug_panel::Toggle",
 
       // Copy paths
       "space y p": "workspace::CopyPath",
@@ -84,6 +86,8 @@
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
+      "space e": "workspace::ToggleLeftDock",
+      "space d": "workspace::ToggleAllDocks",
     },
   },
   {
@@ -93,16 +97,6 @@
       "space w v": "pane::SplitRight",
       "space w s": "pane::SplitDown",
       "space w d": "pane::CloseActiveItem",
-
-      // Terminal
-      "space o t": "terminal_panel::ToggleFocus",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // Quick escape (optional, uncomment if you use jk)
-      // "j k": "vim::NormalBefore"
     },
   },
 ]
