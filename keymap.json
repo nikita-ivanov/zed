@@ -3,6 +3,22 @@
     "context": "ProjectPanel",
     "bindings": {
       "space c": "project_panel::CollapseAllEntries",
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "s": "vim::HelixJumpToWord",
+    },
+  },
+  // emulate ctrl / from nvim
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "terminal_panel::Toggle",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-/": "terminal_panel::Toggle",
     },
   },
   {
