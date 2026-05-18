@@ -105,6 +105,7 @@
     "context": "ProjectPanel",
     "bindings": {
       "space e": "workspace::ToggleLeftDock",
+      "space c": "project_panel::CollapseAllEntries",
     },
   },
   {
