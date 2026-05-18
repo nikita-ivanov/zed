@@ -15,16 +15,16 @@
   },
   "vim_mode": true,
   "terminal": {
-    "font_size": 13.0,
+    "font_size": 14.0,
   },
   "base_keymap": "VSCode",
   "cursor_shape": "bar",
   "ui_font_size": 16,
   "buffer_font_size": 14.0,
   "theme": {
-    "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Ayu Dark",
+    "mode": "light",
+    "light": "Zedokai Light (Filter Sun)",
+    "dark": "Ayu Mirage",
   },
   "debugger": {
     "dock": "bottom",
@@ -33,7 +33,14 @@
   "inlay_hints": { "enabled": false, "show_value_hints": false },
   "languages": {
     "Python": {
-      "language_servers": ["ty", "!pylsp", "!basedpyright", "!pyright", "..."],
+      "language_servers": [
+        "pyrefly",
+        "!ty",
+        "!pylsp",
+        "!basedpyright",
+        "!pyright",
+        "...",
+      ],
     },
   },
 }
