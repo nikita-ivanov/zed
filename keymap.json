@@ -87,7 +87,6 @@
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
       "space e": "workspace::ToggleLeftDock",
-      "space d": "workspace::ToggleAllDocks",
     },
   },
   {
