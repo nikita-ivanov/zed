@@ -102,7 +102,13 @@
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
       "space e": "workspace::ToggleLeftDock",
+      "space c": "project_panel::CollapseAllEntries",
     },
   },
   {
