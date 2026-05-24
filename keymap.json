@@ -1,55 +1,53 @@
 [
+  // Disable Zed's default `space` (vim "move forward one char") so it can act as
+  // a leader key, and apply Helix-style `s` word jump.
   {
-    "context": "ProjectPanel",
+    "context": "VimControl && !menu",
     "bindings": {
-      "space c": "project_panel::CollapseAllEntries",
-    },
-  },
-  {
-    "context": "(VimControl && !menu)",
-    "bindings": {
+      "space": null,
       "s": "vim::HelixJumpToWord",
     },
   },
-  // emulate ctrl / from nvim
+
+  // Emulate `ctrl-/` from nvim — toggle terminal panel from anywhere.
   {
     "context": "Terminal",
     "bindings": {
       "ctrl-/": "terminal_panel::Toggle",
     },
   },
+
+  // Global: debugger step-into. f11 is safe to bind unscoped.
   {
     "bindings": { "f11": "debugger::StepInto" },
   },
+
+  // Hover / signature in any editor mode (insert + normal + visual).
   {
-    "context": "vim_mode == normal",
-    "bindings": {
-      "space q": ["workspace::SendKeystrokes", "e b i \" escape e a \" escape"],
-    },
-  },
-  {
-    "context": "Editor && vim_mode == insert",
+    "context": "Editor",
     "bindings": {
       "alt-h": "editor::Hover",
       "alt-s": "editor::ShowSignatureHelp",
     },
   },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      "space": null,
-    },
-  },
+
+  // Main leader bindings (normal + visual mode in an editor).
   {
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
     "bindings": {
-      // File navigation
-      "space f f": "file_finder::Toggle",
+      // File navigation (LazyVim convention)
+      "space f f": [
+        "task::Spawn",
+        { "task_name": "tv:find-files", "reveal_target": "center" },
+      ],
+      "space f g": [
+        "task::Spawn",
+        { "task_name": "tv:find-in-files", "reveal_target": "center" },
+      ],
       "space f r": "tab_switcher::Toggle",
       "space ,": "tab_switcher::Toggle",
 
-      // Symbols
-      // go get symbols in current file use built in gs
+      // Symbols (built-in `gs` for in-file symbols)
       "space s s": "project_symbols::Toggle",
 
       // Explorer
@@ -65,8 +63,9 @@
         "task::Spawn",
         { "task_name": "lazygit", "reveal_target": "center" },
       ],
+      "space g b": "git::Blame",
 
-      // Function/class navigation (built-in via tree-sitter)
+      // Function/class navigation (tree-sitter)
       "] f": "vim::NextMethodStart",
       "[ f": "vim::PreviousMethodStart",
       "] F": "vim::NextMethodEnd",
@@ -80,41 +79,42 @@
       "] d": "editor::GoToDiagnostic",
       "[ d": "editor::GoToPreviousDiagnostic",
 
-      // Extras you might find useful coming from LazyVim
+      // Window splits (LazyVim convention)
+      "space w v": "pane::SplitRight",
+      "space w s": "pane::SplitDown",
+      "space w d": "pane::CloseActiveItem",
+
+      // Misc (from LazyVim)
       "space b d": "pane::CloseActiveItem",
       "space /": "pane::DeploySearch",
       "space space": "file_finder::Toggle",
       "space c a": "editor::ToggleCodeActions",
       "space c r": "editor::Rename",
       "space x x": "diagnostics::Deploy",
-      "space g b": "git::Blame",
       "space u h": "editor::ToggleInlayHints",
+
+      // Wrap word in double quotes
+      "space q": ["workspace::SendKeystrokes", "e b i \" escape e a \" escape"],
     },
   },
+
+  // Pane navigation from dock/panel.
   {
     "context": "Dock || ProjectPanel",
     "bindings": {
-      // Navigate between panes with ctrl-w + hjkl from dock/panel
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w l": "workspace::ActivatePaneRight",
       "ctrl-w k": "workspace::ActivatePaneUp",
       "ctrl-w j": "workspace::ActivatePaneDown",
     },
   },
+
+  // Project panel specifics.
   {
     "context": "ProjectPanel",
     "bindings": {
       "space e": "workspace::ToggleLeftDock",
       "space c": "project_panel::CollapseAllEntries",
-    },
-  },
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
-    "bindings": {
-      // Window splits (matching LazyVim conventions)
-      "space w v": "pane::SplitRight",
-      "space w s": "pane::SplitDown",
-      "space w d": "pane::CloseActiveItem",
     },
   },
 ]

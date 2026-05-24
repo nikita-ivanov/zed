@@ -9,4 +9,32 @@
     "show_command": false,
     "allow_concurrent_runs": false,
   },
+  {
+    "label": "tv:find-in-files",
+    "command": "zed \"$(tv --input '${ZED_SELECTED_TEXT:-}' --exact text)\"",
+    "env": { "EDITOR": "zed" },
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": false,
+    "shell": {
+      "with_arguments": {
+        "program": "zsh",
+        "args": ["--no-rcs"],
+      },
+    },
+  },
+  {
+    "label": "tv:find-files",
+    "command": "zed \"$(tv --input '${ZED_SELECTED_TEXT:-}' files)\"",
+    "env": { "EDITOR": "zed" },
+    "hide": "always",
+    "allow_concurrent_runs": true,
+    "use_new_terminal": false,
+    "shell": {
+      "with_arguments": {
+        "program": "zsh",
+        "args": ["--no-rcs"],
+      },
+    },
+  },
 ]
