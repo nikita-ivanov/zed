@@ -7,6 +7,20 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "ssh_connections": [
+    {
+      "host": "10.148.7.38",
+      "username": "nikita",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/nikita/repos/st-data-platform"
+          ]
+        }
+      ]
+    }
+  ],
   "cli_default_open_behavior": "existing_window",
   "icon_theme": "Zed (Default)",
   "cursor_blink": true,
@@ -25,7 +39,7 @@
   "theme": {
     "mode": "light",
     "light": "Zedokai Light (Filter Sun)",
-    "dark": "Ayu Mirage",
+    "dark": "Catppuccin Frappé",
   },
   "project_panel": { "dock": "left" },
   "debugger": {
