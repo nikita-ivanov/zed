@@ -22,6 +22,15 @@
     "bindings": { "f11": "debugger::StepInto" },
   },
 
+  // make tab navigation to be ordinal instead of last visited
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    },
+  },
+
   // Hover / signature in any editor mode (insert + normal + visual).
   {
     "context": "Editor",
