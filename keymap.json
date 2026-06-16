@@ -105,8 +105,9 @@
       // Wrap word in double quotes
       "space q": ["workspace::SendKeystrokes", "e b i \" escape e a \" escape"],
 
-      // close tabs to the right
+      // close tabs to the right/left
       "space w l": "pane::CloseItemsToTheRight",
+      "space w h": "pane::CloseItemsToTheLeft",
     },
   },
 
