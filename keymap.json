@@ -1,133 +1,112 @@
 [
-  // Disable Zed's default `space` (vim "move forward one char") so it can act as
-  // a leader key, and apply Helix-style `s` word jump.
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      "space": null,
-      "s": "vim::HelixJumpToWord",
+    // disable Zed's default space since it's used as leader key in vim mode
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            "space": null,
+            "s": "vim::HelixJumpToWord",
+            "f": "vim::HelixJumpToWord"
+        }
     },
-  },
-
-  // Emulate `ctrl-/` from nvim — toggle terminal panel from anywhere.
-  {
-    "context": "Terminal",
-    "bindings": {
-      "ctrl-/": "terminal_panel::Toggle",
+    {
+        "bindings": {
+          "f11": "debugger::StepInto",
+          "ctrl-j": "workspace::ActivatePaneDown",
+          "ctrl-k": "workspace::ActivatePaneUp",
+          "ctrl-h": "workspace::ActivatePaneLeft",
+          "ctrl-l": "workspace::ActivatePaneRight"
+        }
     },
-  },
-
-  // Global: debugger step-into. f11 is safe to bind unscoped.
-  {
-    "bindings": { "f11": "debugger::StepInto" },
-  },
-
-  // make tab navigation to be ordinal instead of last visited
-  {
-    "context": "Pane",
-    "bindings": {
-      "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+    // make tab navigation to be ordinal instead of last visited
+    {
+        "context": "Pane",
+        "bindings": {
+            "ctrl-tab": "pane::ActivateNextItem",
+            "ctrl-shift-tab": "pane::ActivatePreviousItem"
+        }
     },
-  },
-
-  // Hover / signature in any editor mode (insert + normal + visual).
-  {
-    "context": "Editor",
-    "bindings": {
-      "alt-h": "editor::Hover",
-      "alt-s": "editor::ShowSignatureHelp",
+    // hover / signature in any editor mode (insert + normal + visual)
+    {
+        "context": "Editor",
+        "bindings": {
+            "alt-h": "editor::Hover",
+            "alt-s": "editor::ShowSignatureHelp"
+        }
     },
-  },
-
-  // Main leader bindings (normal + visual mode in an editor).
-  {
-    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
-    "bindings": {
-      // File navigation (LazyVim convention)
-      "space f f": [
-        "task::Spawn",
-        { "task_name": "tv:find-files", "reveal_target": "center" },
-      ],
-      "space f g": [
-        "task::Spawn",
-        { "task_name": "tv:find-in-files", "reveal_target": "center" },
-      ],
-      "space f r": "tab_switcher::Toggle",
-      "space ,": "tab_switcher::Toggle",
-
-      // Symbols (built-in `gs` for in-file symbols)
-      "space s s": "project_symbols::Toggle",
-
-      // Explorer
-      "space e": "pane::RevealInProjectPanel",
-      "space d u": "debug_panel::Toggle",
-
-      // Copy paths
-      "space y p": "workspace::CopyPath",
-      "space y n": "workspace::CopyRelativePath",
-
-      // Git
-      "space g g": [
-        "task::Spawn",
-        { "task_name": "lazygit", "reveal_target": "center" },
-      ],
-      "space g b": "git::Blame",
-
-      // Function/class navigation (tree-sitter)
-      "] f": "vim::NextMethodStart",
-      "[ f": "vim::PreviousMethodStart",
-      "] F": "vim::NextMethodEnd",
-      "[ F": "vim::PreviousMethodEnd",
-
-      // Git hunk navigation
-      "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPreviousHunk",
-
-      // Diagnostics navigation
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic",
-
-      // Window splits (LazyVim convention)
-      "space w v": "pane::SplitRight",
-      "space w s": "pane::SplitDown",
-      "space w d": "pane::CloseActiveItem",
-
-      // Misc (from LazyVim)
-      "space b d": "pane::CloseActiveItem",
-      "space /": "pane::DeploySearch",
-      "space space": "file_finder::Toggle",
-      "space c a": "editor::ToggleCodeActions",
-      "space c r": "editor::Rename",
-      "space x x": "diagnostics::Deploy",
-      "space u h": "editor::ToggleInlayHints",
-
-      // Wrap word in double quotes
-      "space q": ["workspace::SendKeystrokes", "e b i \" escape e a \" escape"],
-
-      // close tabs to the right/left
-      "space w l": "pane::CloseItemsToTheRight",
-      "space w h": "pane::CloseItemsToTheLeft",
+    // move across buffers with shift h/l
+    {"context": "Editor && VimControl && !VimWaiting && !menu",
+      "bindings": {
+        "shift-h": "pane::ActivatePreviousItem",
+        "shift-l": "pane::ActivateNextItem",
+        "space o f": "workspace::Open"
+      }
     },
-  },
+    // main lazyvim style bindings
+    {
+        "context": "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu",
+        "bindings": {
+            "g u ": "vim::ConvertToUpperCase",
+            "space f r": "tab_switcher::Toggle",
+            "space ,": "tab_switcher::Toggle",
+            "space o f": "workspace::Open",
+            "g r": "editor::FindAllReferences",
 
-  // Pane navigation from dock/panel.
-  {
-    "context": "Dock || ProjectPanel",
-    "bindings": {
-      "ctrl-w h": "workspace::ActivatePaneLeft",
-      "ctrl-w l": "workspace::ActivatePaneRight",
-      "ctrl-w k": "workspace::ActivatePaneUp",
-      "ctrl-w j": "workspace::ActivatePaneDown",
-    },
-  },
+            // lazyvim's leader s S but global symbol search; use builtin gs for local symbol search
+            "space s s": "project_symbols::Toggle",
 
-  // Project panel specifics.
-  {
-    "context": "ProjectPanel",
-    "bindings": {
-      "space e": "workspace::ToggleLeftDock",
-      "space c": "project_panel::CollapseAllEntries",
+            "space e": "pane::RevealInProjectPanel",
+
+            // copy paths
+            "space y p": "workspace::CopyPath",
+            "space y n": "workspace::CopyRelativePath",
+
+            // git
+            "space g g": [
+                "task::Spawn",
+                { "task_name": "lazygit", "reveal_target": "center" }
+            ],
+            "space g b": "git::Blame",
+
+            // function navigation
+            "] f": "vim::NextMethodStart",
+            "[ f": "vim::PreviousMethodStart",
+            "] F": "vim::NextMethodEnd",
+            "[ F": "vim::PreviousMethodEnd",
+
+            // git hunk navigation (same as built in [c and ]c)
+            "] h": "editor::GoToHunk",
+            "[ h": "editor::GoToPreviousHunk",
+
+            // window splits
+            "space w v": "pane::SplitRight",
+            "space w s": "pane::SplitDown",
+            "space w d": "pane::CloseActiveItem",
+
+            // misc
+            "space b d": "pane::CloseActiveItem",
+            "space /": "pane::DeploySearch",
+            "space f g": "text_finder::Toggle",
+            "space space": "file_finder::Toggle",
+            "space c a": "editor::ToggleCodeActions",
+            "space c r": "editor::Rename",
+            "space x x": "diagnostics::Deploy",
+            "space u h": "editor::ToggleInlayHints",
+
+            // close tabs to the right/left
+            "space w l": "pane::CloseItemsToTheRight",
+            "space w h": "pane::CloseItemsToTheLeft"
+
+        }
     },
-  },
+    // project panel utils
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "space e": "workspace::ToggleLeftDock",
+            "space c": "project_panel::CollapseAllEntries",
+            "space n": "project_panel::NewFile",
+            "space r": "project_panel::Rename",
+            "space d": "project_panel::Delete"
+        }
+    },
 ]
