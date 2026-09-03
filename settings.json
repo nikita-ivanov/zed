@@ -1,12 +1,41 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "wsl_connections": [
+    {
+      "distro_name": "Ubuntu",
+      "user": null,
+      "projects": [
+        {
+          "paths": ["/home/nikitaivanov"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/create-template-repo"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/st-data-platform/./"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/strategy-builder"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/strategy-builder-api"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/strategy-builder/./"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/strategy-builder/backend/./"],
+        },
+        {
+          "paths": ["/home/nikitaivanov/projects/tsds-catalog-test"],
+        },
+      ],
+    },
+  ],
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry",
+    },
+  },
   "ssh_connections": [
     {
       "host": "10.148.7.38",
@@ -19,8 +48,18 @@
       ],
     },
   ],
+  "scrollbar": { "show": "never" },
+  "status_bar": {
+    "experimental.show": true,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false,
+  },
+  "vertical_scroll_margin": 8,
   "cli_default_open_behavior": "existing_window",
   "colorize_brackets": true,
+  "lsp_results_location": "picker",
   "project_panel": {
     "dock": "left",
   },
@@ -31,12 +70,13 @@
     "dock": "left",
   },
   "agent": {
+    "enable_feedback": false,
+    "tool_permissions": {
+      "default": "allow",
+    },
     "dock": "right",
-    "favorite_models": [],
-    "model_parameters": [],
   },
-  "icon_theme": "Zed (Default)",
-  "cursor_blink": true,
+  "cursor_blink": false,
   "relative_line_numbers": "enabled",
   "git_panel": {
     "dock": "left",
@@ -46,8 +86,10 @@
   "terminal": {
     "font_size": 14.0,
   },
-  "base_keymap": "VSCode",
+  "base_keymap": "Zed",
   "cursor_shape": "bar",
+  "unnecessary_code_fade": 0.3,
+  "minimum_contrast_for_highlights": 100,
   "git": {
     "inline_blame": {
       "enabled": false,
@@ -55,17 +97,32 @@
   },
   "ui_font_size": 14.0,
   "buffer_font_size": 15.0,
+  "agent_ui_font_size": 15.0,
+  "agent_buffer_font_size": 15.0,
   "theme": {
     "mode": "light",
-    "light": "Zedokai Light (Filter Sun)",
-    "dark": "Catppuccin Frappé",
+    "light": "Alabaster",
+    "dark": "Alabaster Dark",
   },
   "debugger": {
     "dock": "bottom",
+    // set timeout to 10s to prevent crashes on wsl2
+    "timeout": 10000,
   },
   "inlay_hints": { "enabled": false, "show_value_hints": false },
   "languages": {
     "Python": {
+      "formatter": [
+        {
+          "code_action": "source.organizeImports.ruff",
+        },
+        {
+          "language_server": {
+            "name": "ruff",
+          },
+        },
+      ],
+      "format_on_save": "on",
       "language_servers": [
         "pyrefly",
         "!ty",
@@ -74,6 +131,115 @@
         "!pyright",
         "...",
       ],
+    },
+    "YAML": {
+      "tab_size": 2,
+    },
+  },
+  "theme_overrides": {
+    "Alabaster": {
+      // editor / terminal surfaces (were #f7f7f7)
+      "editor.background": "#faeacd",
+      "editor.gutter.background": "#faeacd",
+      "terminal.background": "#faeacd",
+      "tab.active_background": "#faeacd",
+
+      // chrome / panels (were #e6e6e6)
+      "background": "#e9dabfff",
+      "surface.background": "#e9dabfff",
+      "elevated_surface.background": "#e9dabfff",
+      "element.background": "#e9dabfff",
+      "title_bar.background": "#e9dabfff",
+      "title_bar.inactive_background": "#e9dabfff",
+      "toolbar.background": "#e9dabfff",
+      "tab_bar.background": "#e9dabfff",
+      "tab.inactive_background": "#e9dabfff",
+      "panel.background": "#e9dabfff",
+      "editor.subheader.background": "#e9dabfff",
+
+      // borders (were #d2d2d2 / #dadada / #c8c8c8 / #d3d3d4)
+      "border": "#030303FF",
+      "border.variant": "#ddcfb5ff",
+      "border.focused": "#cabda6ff",
+      "border.disabled": "#d6c8b0ff",
+
+      // interactive elements (were #dcdcdc / #d2d2d2 / #f0f0f0)
+      "element.hover": "#dfd0b7ff",
+      "element.active": "#dfd0b7ff",
+      "element.selected": "#d5c7aeff",
+      "element.disabled": "#f3e3c7ff",
+      "ghost_element.hover": "#dfd0b7ff",
+      "ghost_element.active": "#d5c7aeff",
+      "ghost_element.selected": "#d5c7aeff",
+      "ghost_element.disabled": "#f3e3c7ff",
+
+      // scrollbar (were #dfdfe0 / #eeeeee)
+      "scrollbar.thumb.hover_background": "#e2d3baff",
+      "scrollbar.thumb.border": "#e2d3baff",
+      "scrollbar.track.border": "#f1e1c6ff",
+
+      // editor lines / highlights (were #f0f0f0 / #cfcfcf81 / #a3a3a4 / #dadada)
+      "editor.active_line.background": "#f3e3c7ff",
+      "editor.highlighted_line.background": "#f3e3c7ff",
+      "editor.document_highlight.read_background": "#d2c4ac81",
+      "editor.document_highlight.write_background": "#d2c4ac81",
+      "editor.invisible": "#a59a88ff",
+      "status_bar.background": "#ddcfb5ff",
+
+      "vim.normal.background": "#98971aff",
+      "vim.visual.background": "#d79921ff",
+      "vim.insert.background": "#b16286ff",
+      "vim.yank.background": "#d65d0eff",
+
+      "syntax": {
+        // "function.call": {"color": "#d79921ff"},
+        // "function.method.call": {"color": "#d79921ff"},
+        "function.definition": { "color": "#000000ff", "font_weight": 700 },
+        "function.method": { "font_weight": 700 },
+        "function.kwargs": { "color": "#d2c4ac81" },
+
+        "type.class.definition": { "color": "#000000ff", "font_weight": 700 },
+        "type.class": { "font_weight": 700 },
+        "type.class.call": { "font_weight": 700 },
+
+        // "def"/"class"/"lambda"/"async"
+        "keyword.definition": { "font_weight": 100 },
+        // "and"/"or"/"not"/"in"/"is"
+        "keyword.operator": { "color": "#aa3731ff" },
+      },
+    },
+    "Gruvbox Light Soft": {
+      "accents": [
+        "#cc241dff",
+        "#98971aff",
+        "#d79921ff",
+        "#458588ff",
+        "#b16286ff",
+        "#689d6aff",
+        "#d65d0eff",
+      ],
+      "syntax": {
+        "string": {
+          "color": "#214C6EFF",
+        },
+      },
+    },
+    "Gruvbox Light": {
+      "accents": [
+        "#cc241dff",
+        "#98971aff",
+        "#d79921ff",
+        "#458588ff",
+        "#b16286ff",
+        "#689d6aff",
+        "#d65d0eff",
+      ],
+      "border": "#030303FF",
+      "syntax": {
+        "string": {
+          "color": "#214C6EFF",
+        },
+      },
     },
   },
 }
