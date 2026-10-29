@@ -1,54 +1,9 @@
 {
-  "wsl_connections": [
-    {
-      "distro_name": "Ubuntu",
-      "user": null,
-      "projects": [
-        {
-          "paths": ["/home/nikitaivanov"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/create-template-repo"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/st-data-platform/./"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/strategy-builder"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/strategy-builder-api"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/strategy-builder/./"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/strategy-builder/backend/./"],
-        },
-        {
-          "paths": ["/home/nikitaivanov/projects/tsds-catalog-test"],
-        },
-      ],
-    },
-  ],
-  "agent_servers": {
-    "github-copilot-cli": {
-      "type": "registry",
-    },
-  },
-  "ssh_connections": [
-    {
-      "host": "10.148.7.38",
-      "username": "nikita",
-      "args": [],
-      "projects": [
-        {
-          "paths": ["/home/nikita/repos/st-data-platform"],
-        },
-      ],
-    },
-  ],
+  "disable_ai": true,
+  "vim_mode": true,
+  "title_bar": {"show_sign_in": false},
   "scrollbar": { "show": "never" },
+  "search": {"search_on_type": false},
   "status_bar": {
     "experimental.show": true,
   },
@@ -56,7 +11,13 @@
     "breadcrumbs": true,
     "quick_actions": false,
   },
-  "vertical_scroll_margin": 8,
+  "auto_update": false,
+  "telemetry": {
+    "anthropic_retention": false,
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vertical_scroll_margin": 12,
   "cli_default_open_behavior": "existing_window",
   "colorize_brackets": true,
   "lsp_results_location": "picker",
@@ -66,23 +27,12 @@
   "outline_panel": {
     "dock": "left",
   },
-  "collaboration_panel": {
-    "dock": "left",
-  },
-  "agent": {
-    "enable_feedback": false,
-    "tool_permissions": {
-      "default": "allow",
-    },
-    "dock": "right",
-  },
   "cursor_blink": false,
   "relative_line_numbers": "enabled",
   "git_panel": {
     "dock": "left",
     "tree_view": true,
   },
-  "vim_mode": true,
   "terminal": {
     "font_size": 14.0,
   },
@@ -102,14 +52,14 @@
   "theme": {
     "mode": "light",
     "light": "Alabaster",
-    "dark": "Alabaster Dark",
+    "dark": "Gruvbox Dark",
   },
   "debugger": {
     "dock": "bottom",
-    // set timeout to 10s to prevent crashes on wsl2
-    "timeout": 10000,
+    // set timeout to 5s to prevent crashes on wsl2
+    "timeout": 5000,
   },
-  "inlay_hints": { "enabled": false, "show_value_hints": false },
+  "inlay_hints": { "enabled": true, "show_value_hints": false },
   "languages": {
     "Python": {
       "formatter": [
@@ -126,8 +76,8 @@
       "language_servers": [
         "pyrefly",
         "!ty",
-        "!pylsp",
         "!basedpyright",
+        "!pylsp",
         "!pyright",
         "...",
       ],

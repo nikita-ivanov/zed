@@ -94,8 +94,9 @@
 
             // close tabs to the right/left
             "space w l": "pane::CloseItemsToTheRight",
-            "space w h": "pane::CloseItemsToTheLeft"
+            "space w h": "pane::CloseItemsToTheLeft",
 
+            "space t t": "workspace::NewCenterTerminal",
         }
     },
     // project panel utils
